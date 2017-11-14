@@ -7,7 +7,7 @@ const mjpage = require('mathjax-node-page/lib/main.js').mjpage;
 import debug from 'debug';
 const genDebug = debug("mbe:gen");
 
-export function getRoutes(rootDir) {
+export function getRoutes(rootDir, sponsors) {
     return async (data) => {
         let dev = data.dev;
         let jsonDir = path.join(rootDir, "..", "text", "build", "json");
@@ -38,7 +38,7 @@ export function getRoutes(rootDir) {
         let root = {
             path: '/',
             component: 'src/containers/Root',
-            getProps: () => map["/index.fjson"],
+            getProps: () => ({ page: map["/index.fjson"], sponsors: sponsors }),
         };
         let normal = pages.filter((page) => page !== "index.fjson").map((page) => {
             return {

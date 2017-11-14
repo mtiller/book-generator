@@ -62,6 +62,10 @@
   version "16.0.22"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.0.22.tgz#19ad106e124aceebd2b4d430a278d55413ee8759"
 
+"@types/url-template@^2.0.28":
+  version "2.0.28"
+  resolved "https://registry.npmjs.org/@types/url-template/-/url-template-2.0.28.tgz#b692f0e72108c0165d541f9ab95e572fc966318b"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.npmjs.org/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -6485,6 +6489,10 @@ url-parse@^1.1.8:
   dependencies:
     querystringify "~1.0.0"
     requires-port "~1.0.0"
+
+url-template@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmjs.org/url-template/-/url-template-2.0.8.tgz#fc565a3cccbff7730c775f5641f9555791439f21"
 
 url@^0.11.0:
   version "0.11.0"
