@@ -10,7 +10,7 @@ const mjpage = require('mathjax-node-page/lib/main.js').mjpage;
 
 const debug = require('debug');
 const genDebug = debug("mbe:gen");
-genDebug.enabled = true;
+// genDebug.enabled = true;
 
 export default {
   getSiteProps: () => ({

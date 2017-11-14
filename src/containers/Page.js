@@ -45,7 +45,7 @@ export default getRouteProps((data) => (
         </div>
 
         <div id="toc-sidebar" className="ui styled sidebar vertical">
-            <h3>Table of Contents</h3>
+            <h3><a href="/">Table of Contents</a></h3>
             {<ul>
                 {data.parents && data.parents.map((parent, i) => <li key={i}><a className="section" href={parent.link}>{parent.title}</a></li>)}
             </ul>}
