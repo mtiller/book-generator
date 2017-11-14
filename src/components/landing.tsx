@@ -127,8 +127,8 @@ export class QuickLinks extends React.Component<{}, {}> {
                 <div className="content">
                     <div className="transition hidden">
                         <div className="ui comments">
-                            {questions.map((question) => (
-                                <div style={dontGrowParent} className="comment">
+                            {questions.map((question, i) => (
+                                <div key={i} style={dontGrowParent} className="comment">
                                     <span className="author">{question.question}</span>
                                     <div className="text">{question.answer}
                                     </div>
