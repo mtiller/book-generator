@@ -34,7 +34,7 @@ export default getRouteProps((data) => (
                 <a href="/"><img src="/_static/images/TitleHeading.png" /></a>
             </div>
             <div className="ui divider" style={{ marginTop: "5px" }} />
-            <div className="ui breadcrumbs">
+            <div className="ui breadcrumb">
                 {data.parents && data.parents.map((parent, i) => <div key={i}><a className="section" href={parent.link}>{parent.title}</a><i className="angle right icon divider" /></div>)}
                 {data.title}
             </div>
