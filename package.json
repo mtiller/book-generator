@@ -9,7 +9,11 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
+    "@types/find": "^0.2.0",
     "axios": "^0.17.0",
+    "debug": "^3.1.0",
+    "find": "^0.2.7",
+    "mathjax-node-page": "^1.4.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",

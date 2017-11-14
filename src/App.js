@@ -2,21 +2,20 @@ import React from 'react'
 import { Router, Link } from 'react-static'
 //
 import Routes from 'react-static-routes'
+const debug = require('debug');
+const appDebug = debug("mbe:static-app");
+appDebug.enabled = true;
 
 import './app.css'
 
-export default () => (
-  <Router>
-    <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/foo">About</Link>
-        <Link to="/blog">Blog</Link>
-      </nav>
-      <div className="content">
-        <Routes />
+export default (data) => {
+  return (
+    <Router>
+      <div>
+        <div className="content">
+          <Routes />
+        </div>
       </div>
-    </div>
-  </Router>
-)
+    </Router>
+  );
+}
