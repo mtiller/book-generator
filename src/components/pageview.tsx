@@ -10,12 +10,24 @@ export interface PageViewProps {
 
 export class PageView extends React.Component<PageViewProps, {}> {
     private content: HTMLDivElement | null = null;
+    /**
+     * "What happens in the browser, stays in the browser"
+     * 
+     * None of this happens during the server side rendering.  Both
+     * require a DOM in order to do their thing.
+     */
     componentDidMount() {
         // This activates the "thumb" so that the TOC can be exposed by
         // clicking on it.
         $("#toc-sidebar").sidebar("attach events", "#thumb", "toggle");
-        console.log("content = ", this.content);
 
+        // Note that this is only called when mounting.  This means two 
+        // things.  First, it means that it will not be rendered server
+        // side (only in the DOM).  The other slightly dodgy thing
+        // here is that this is rendering (using ReactDOM.render)
+        // inside a section of the DOM that is ostensibly already
+        // being managed by React.  But it is in "dangerous inner HTML"
+        // so I suspect React isn't too concerned with that.
         if (this.content) renderFigures(this.content);
     }
     render() {
