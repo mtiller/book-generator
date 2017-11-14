@@ -8,6 +8,10 @@
   dependencies:
     axios "*"
 
+"@types/debug@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.npmjs.org/@types/debug/-/debug-0.0.30.tgz#dc1e40f7af3b9c815013a7860e6252f6352a84df"
+
 "@types/find@^0.2.0":
   version "0.2.0"
   resolved "https://registry.npmjs.org/@types/find/-/find-0.2.0.tgz#a3c693bbd048a5e9e7cf0d94843fd556fef9baff"

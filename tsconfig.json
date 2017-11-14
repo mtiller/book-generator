@@ -15,6 +15,7 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "checkJs": true,
     "paths": {
       "@myPathAlias/*": [
         "src/path-alias-example/*"
@@ -29,5 +30,8 @@
       "es2016"
     ]
   },
-  "exclude": ["dist/**/*", "public/**/*"]
+  "exclude": [
+    "dist/**/*",
+    "public/**/*"
+  ]
 }

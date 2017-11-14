@@ -9,6 +9,7 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
+    "@types/debug": "^0.0.30",
     "@types/find": "^0.2.0",
     "axios": "^0.17.0",
     "debug": "^3.1.0",
