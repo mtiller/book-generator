@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "checkJs": true,
+    "experimentalDecorators": true,
     "paths": {
       "@myPathAlias/*": [
         "src/path-alias-example/*"

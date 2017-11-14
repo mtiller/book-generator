@@ -11,15 +11,20 @@
   "dependencies": {
     "@types/debug": "^0.0.30",
     "@types/find": "^0.2.0",
+    "@types/recharts": "^1.0.5",
     "@types/url-template": "^2.0.28",
     "axios": "^0.17.0",
     "debug": "^3.1.0",
     "find": "^0.2.7",
     "mathjax-node-page": "^1.4.1",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
     "react-static": "^4.1.0",
+    "recharts": "^1.0.0-beta.1",
+    "siren-types": "^0.2.3",
     "url-template": "^2.0.8"
   },
   "devDependencies": {

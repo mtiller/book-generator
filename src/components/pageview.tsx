@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SphinxPage } from '../sphinx';
+import { renderFigures } from './figures';
 
 declare var $: any;
 
@@ -14,6 +15,8 @@ export class PageView extends React.Component<PageViewProps, {}> {
         // clicking on it.
         $("#toc-sidebar").sidebar("attach events", "#thumb", "toggle");
         console.log("content = ", this.content);
+
+        if (this.content) renderFigures(this.content);
     }
     render() {
         let data = this.props.data;

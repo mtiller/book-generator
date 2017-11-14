@@ -22,16 +22,16 @@ if (typeof document !== 'undefined') {
   // Render!
   render(App)
 
-  let figures = document.getElementsByClassName("figure");
-  console.log("figures = ", figures);
+  // let figures = document.getElementsByClassName("figure");
+  // console.log("figures = ", figures);
 
   // Hot Module Replacement
   if (module.hot) {
     module.hot.accept('./App', () => {
       render(require('./App').default)
 
-      let figures = document.getElementsByClassName("figure");
-      console.log("figures2 = ", figures);
+      // let figures = document.getElementsByClassName("figure");
+      // console.log("figures2 = ", figures);
     })
   }
 }

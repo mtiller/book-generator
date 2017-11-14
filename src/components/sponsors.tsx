@@ -18,7 +18,6 @@ export interface Sponsors {
 
 export interface SponsorViewProps {
     sponsors: Sponsors;
-    logoTemplate: string;
 }
 
 export interface SponsorRowProps {
