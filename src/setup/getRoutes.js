@@ -3,6 +3,7 @@ import find from 'find';
 const fs = require('fs');
 
 const mjpage = require('mathjax-node-page/lib/main.js').mjpage;
+var lunr = require('lunr');
 
 import debug from 'debug';
 const genDebug = debug("mbe:gen");
@@ -21,8 +22,10 @@ export function getRoutes(rootDir, sponsors) {
         genDebug("# of pages = %j", pages.length);
 
         let map = {};
+        let titles = {};
         for (let i = 0; i < pages.length; i++) {
             let page = pages[i];
+            let href = page.slice(0, page.length - 6) + "/";
             let file = path.join(".", "json", page);
             let obj = JSON.parse(fs.readFileSync(file).toString());
             if (obj.body && !dev) {
@@ -33,6 +36,7 @@ export function getRoutes(rootDir, sponsors) {
                 });
             }
             map[page] = obj;
+            titles[href] = obj.title;
         }
 
         let root = {
@@ -44,9 +48,38 @@ export function getRoutes(rootDir, sponsors) {
             return {
                 path: page.slice(0, page.length - 6) + "/",
                 component: 'src/containers/Page',
-                getProps: () => map[page],
+                getProps: () => ({ data: map[page], titles: titles }),
             }
         });
+
+        if (!dev) {
+            genDebug("Building index");
+            let index = lunr(function () {
+                this.metadataWhitelist = ["title"];
+                this.field("id");
+                this.field("title");
+                this.field("body");
+
+                normal.forEach((page) => {
+                    let obj = page.getProps();
+                    if (obj.title && obj.body) {
+                        let doc = {
+                            id: page.path,
+                            body: obj.body,
+                            title: obj.title,
+                        };
+                        genDebug("  Indexing %o", doc.title);
+                        this.add(doc);
+                    }
+                })
+            });
+
+            genDebug("Search for 'equation' yielded %s hits", index.search("equation").length);
+            fs.writeFile(path.join("public", "lunr.json"), JSON.stringify(index.toJSON()), (err) => {
+                if (err) console.error(err);
+            });
+        }
+
         genDebug("# of normal pages: %j", normal.length);
         let error = {
             is404: true,

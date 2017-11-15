@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { SphinxPage } from '../sphinx';
 import { renderFigures } from './figures';
+import { SearchBox } from './search';
 
 declare var $: any;
 
 export interface PageViewProps {
     data: SphinxPage;
+    titles: { [id: string]: string };
 }
 
 export class PageView extends React.Component<PageViewProps, {}> {
@@ -59,6 +61,8 @@ export class PageView extends React.Component<PageViewProps, {}> {
                             </a>
                         </div>
                     }
+
+                    <SearchBox indexUrl="/lunr.json" titles={this.props.titles} />
 
                     {data.next && <div className="right menu">
                         <div className="title item">

@@ -54,11 +54,6 @@ export function Document(args) {
   ga('create', 'UA-33034217-6', 'xogeny.com');
   ga('send', 'pageview');`}} />
 
-                <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css"
-                    rel="stylesheet" type="text/css" />
-                {/* <style type="text/css">
-  #mc_embed_signup{background:#transparent; clear:left; font:14px Helvetica,Arial,sans-serif; }
-    </style> */}
             </Head>
             <Body>
                 {children}

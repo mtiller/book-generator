@@ -20,6 +20,10 @@
   version "4.6.1"
   resolved "https://registry.npmjs.org/@types/history/-/history-4.6.1.tgz#0dbaef4febad5d074d06dbdfae6b027d1d701d25"
 
+"@types/lunr@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.npmjs.org/@types/lunr/-/lunr-2.1.3.tgz#efa1eb1d2bfa7b86c41bde119774be6ae4016666"
+
 "@types/node@*", "@types/node@^8.0.47":
   version "8.0.51"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.0.51.tgz#b31d716fb8d58eeb95c068a039b9b6292817d5fb"
@@ -4134,6 +4138,10 @@ lru-cache@^4.0.1:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+lunr@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.npmjs.org/lunr/-/lunr-2.1.4.tgz#52be0a9d068321909a7fb46575620e24417d5591"
 
 macaddress@^0.2.8:
   version "0.2.8"

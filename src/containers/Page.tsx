@@ -3,4 +3,6 @@ import { getRouteProps } from 'react-static';
 import { PageView } from '../components';
 import { SphinxPage } from '../sphinx';
 
-export default getRouteProps((data: SphinxPage) => <PageView data={data} />);
+export default getRouteProps((props: { data: SphinxPage, titles: { [id: string]: string } }) => {
+    return <PageView data={props.data} titles={props.titles} />
+});
