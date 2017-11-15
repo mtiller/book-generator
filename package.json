@@ -9,10 +9,6 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "@types/debug": "^0.0.30",
-    "@types/find": "^0.2.0",
-    "@types/recharts": "^1.0.5",
-    "@types/url-template": "^2.0.28",
     "axios": "^0.17.0",
     "debug": "^3.1.0",
     "find": "^0.2.7",
@@ -28,6 +24,10 @@
     "url-template": "^2.0.8"
   },
   "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/find": "^0.2.0",
+    "@types/recharts": "^1.0.5",
+    "@types/url-template": "^2.0.28",
     "@types/axios": "^0.14.0",
     "@types/node": "^8.0.47",
     "@types/react": "^16.0.18",
