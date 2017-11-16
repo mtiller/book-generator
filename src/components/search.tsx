@@ -5,20 +5,7 @@ import { Index } from 'lunr';
 
 import debug from 'debug';
 const searchDebug = debug("mbe:search");
-searchDebug.enabled = true;
-
-const content = [
-    {
-        title: 'Horse',
-        description: 'An Animal',
-    },
-    {
-        title: 'Cow',
-        description: 'Another Animal',
-    }
-];
-
-declare var $: any;
+// searchDebug.enabled = true;
 
 export interface SearchBoxProps {
     indexUrl: string;

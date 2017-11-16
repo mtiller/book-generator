@@ -55,21 +55,23 @@ export function getRoutes(rootDir, sponsors) {
         if (!dev) {
             genDebug("Building index");
             let index = lunr(function () {
-                this.metadataWhitelist = ["title"];
                 this.field("id");
                 this.field("title");
                 this.field("body");
 
+                genDebug("  Pages to index: %o", normal);
                 normal.forEach((page) => {
-                    let obj = page.getProps();
+                    let obj = page.getProps().data;
+                    genDebug("    Indexing %s", obj.title);
                     if (obj.title && obj.body) {
                         let doc = {
                             id: page.path,
                             body: obj.body,
                             title: obj.title,
                         };
-                        genDebug("  Indexing %o", doc.title);
                         this.add(doc);
+                    } else {
+                        genDebug("      Missing title or body: %o", obj);
                     }
                 })
             });
