@@ -140,8 +140,16 @@ export class BookApp extends React.Component<BookAppProps, {}> {
                 if (key === "time") {
                     continue;
                 }
-                if (this.props.details.casedata.vars.some((v) => v.name === key)) {
+                let casedata = this.props.details.casedata.vars.find((v) => v.name === key);
+                if (casedata) {
                     appDebug("  Found %s in casedata, keeping", key);
+                    appDebug("    Multiplying %s by scale factor of %d", key, casedata.scale);
+                    let v = results[key];
+                    if (typeof v == "number") {
+                        results[key] = v * casedata.scale;
+                    } else {
+                        results[key] = v.map((x) => x * casedata.scale);
+                    }
                 } else {
                     appDebug("  Did not find %s in casedata, removing", key);
                     delete results[key];
