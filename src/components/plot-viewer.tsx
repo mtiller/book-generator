@@ -15,6 +15,8 @@ export interface PlotViewerProps {
     xvar: string;
     results: Results;
     ylabel: string;
+    ymin: number | null;
+    ymax: number | null;
     descriptions: Descriptions;
     legendAlign?: "left" | "right" | "center";
     legendVerticalAlign?: "top" | "middle" | "bottom";
@@ -71,7 +73,7 @@ export class PlotViewer extends React.Component<PlotViewerProps, {}> {
                             This YAxis doesn't have a label.  The prop is this.props.ylabel, but the @types/recharts aren't updated to allowt his:
                             https://github.com/recharts/recharts/issues/782#issuecomment-331203175
                         */}
-                        <YAxis />
+                        <YAxis domain={['auto', 'auto']} />
                         <Tooltip />
                         <CartesianGrid stroke="#f5f5f5" />
                         {show.map((signal, i) => <Line key={signal} type="monotone" dataKey={signal} stroke={colorMap10[i % 10]} yAxisId={0} name={this.props.descriptions[signal] || signal} />)}

@@ -206,6 +206,7 @@ export class BookApp extends React.Component<BookAppProps, {}> {
                             style={{ width: "640px", margin: "4px", paddingBottom: "20px" }}>
                             <PlotViewer xvar="time" results={results} descriptions={this.descriptions}
                                 legendVerticalAlign={this.verticalAlign} ylabel={this.props.details.casedata.ylabel}
+                                ymin={this.props.details.casedata.ymin} ymax={this.props.details.casedata.ymax}
                                 title={this.props.details.casedata ? this.props.details.casedata.title : this.props.details.desc.description} />
                         </div>}
                     </div>
