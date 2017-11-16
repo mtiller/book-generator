@@ -8,4 +8,5 @@ interface RootRouteData {
     page: SphinxPage;
     sponsors: Sponsors;
 }
+
 export default getRouteProps((data: RootRouteData) => <LandingPage data={data.page} sponsors={data.sponsors} />);

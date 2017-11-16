@@ -27,16 +27,21 @@ export function getRoutes(rootDir, sponsors) {
             let page = pages[i];
             let href = page.slice(0, page.length - 6) + "/";
             let file = path.join(".", "json", page);
-            let obj = JSON.parse(fs.readFileSync(file).toString());
-            if (obj.body && !dev) {
-                obj.body = await new Promise((resolve) => {
-                    genDebug("Rendering math for %s", page);
-                    mjpage(obj.body, { format: ["TeX"] }, { svg: true }, (output) => resolve(output));
-                    genDebug("...done");
-                });
+            try {
+                let obj = JSON.parse(fs.readFileSync(file).toString());
+                if (obj.body && !dev) {
+                    obj.body = await new Promise((resolve) => {
+                        genDebug("Rendering math for %s", page);
+                        mjpage(obj.body, { format: ["TeX"] }, { svg: true }, (output) => resolve(output));
+                        genDebug("...done");
+                    });
+                }
+                map[page] = obj;
+                titles[href] = obj.title;
+            } catch (e) {
+                console.error("Error processing page " + page);
+                console.error(e);
             }
-            map[page] = obj;
-            titles[href] = obj.title;
         }
 
         let root = {
@@ -77,7 +82,9 @@ export function getRoutes(rootDir, sponsors) {
             });
 
             genDebug("Search for 'equation' yielded %s hits", index.search("equation").length);
-            fs.writeFile(path.join("public", "lunr.json"), JSON.stringify(index.toJSON()), (err) => {
+
+            // We need to write to 'dist' because 'public' has already been copied.
+            fs.writeFile(path.join("dist", "lunr.json"), JSON.stringify(index.toJSON()), (err) => {
                 if (err) console.error(err);
             });
         }
