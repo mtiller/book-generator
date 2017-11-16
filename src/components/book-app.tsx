@@ -27,6 +27,9 @@ function defaultParameters(details: Details): { [id: string]: string } {
     parameters.forEach((param) => {
         let v = details.vars[param];
         ret[param] = v.start || "0.0";
+        if (details.casedata.mods.hasOwnProperty(param)) {
+            ret[param] = details.casedata.mods[param].toString();
+        }
     });
     return ret;
 }

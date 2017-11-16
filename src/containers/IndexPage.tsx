@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getRouteProps } from 'react-static';
-import { SphinxPage } from '../sphinx';
+import { IndexPage, IndexPageProps } from '../components';
 
-
-export default getRouteProps((props: { data: SphinxPage, titles: { [id: string]: string } }) => {
-    return <IndexPage data={props.data} titles={props.titles} />
+export default getRouteProps((props: IndexPageProps) => {
+    return <IndexPage {...props} />
 });

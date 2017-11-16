@@ -1,5 +1,5 @@
 export interface CaseData {
-    mods: {};
+    mods: { [variable: string]: number };
     vars: Array<{
         style: string,
         scale: number,
