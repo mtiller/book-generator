@@ -122,9 +122,8 @@ export class IndexPage extends React.Component<IndexPageProps, {}> {
         })
         return (
             <div>
-                <div className="ui fluid" style={{ textAlign: "center" }}>
-                    <img src="/_static/images/TitleHeading.png" />
-                    <h3 style={{ marginTop: 0, marginBottom: "10px" }} className="ui sub header">by Dr. Michael M. Tiller</h3>
+                <div className="ui fluid" style={{ marginTop: "3em", textAlign: "center" }}>
+                    <a href="/"><img src="/_static/images/TitleHeading.png" /></a>
                 </div>
 
                 <h1>Index</h1>
