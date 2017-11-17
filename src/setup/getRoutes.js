@@ -145,7 +145,7 @@ export function getRoutes(rootDir, sponsors) {
             index.push({
                 path: '/genindex',
                 component: 'src/containers/IndexPage',
-                getProps: () => ({ index: map["/genindex.fjson"], titles: titles }),
+                getProps: () => ({ index: map["/genindex.fjson"], titles: titles, ncol: 4 }),
             });
             genDebug("  Found index");
         } else {
