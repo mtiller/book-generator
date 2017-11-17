@@ -8,6 +8,27 @@ var lunr = require('lunr');
 import debug from 'debug';
 const genDebug = debug("mbe:gen");
 
+function isNormal(name, data) {
+    if (name === "index.fjson") {
+        genDebug("  %s is not a normal file, it is the landing page", name);
+        return false;
+    }
+    if (name === "globalcontext.fjson") {
+        genDebug("  %s is not a normal file, it is the general context file", name);
+        return false;
+    }
+    if (name === "search.fjson") {
+        genDebug("  %s is not a normla file, it is the search page", name);
+        return false;
+    }
+    let ret = data.hasOwnProperty("body") && data.hasOwnProperty("title");
+    if (!ret) {
+        genDebug("  %s is not a normal file, it is missing title and body", name);
+    } else {
+        genDebug("  %s is a normal file", name);
+    }
+    return ret;
+}
 export function getRoutes(rootDir, sponsors) {
     return async (data) => {
         // Figure out if we are running this in dev mode
@@ -71,7 +92,7 @@ export function getRoutes(rootDir, sponsors) {
             getProps: () => ({ page: map["/index.fjson"], sponsors: sponsors }),
         };
 
-        let normal = pages.filter((page) => page !== "index.fjson").map((page) => {
+        let normal = pages.filter((page) => isNormal(page, map[page])).map((page) => {
             return {
                 path: page.slice(0, page.length - 6) + "/",
                 component: 'src/containers/Page',
@@ -119,6 +140,18 @@ export function getRoutes(rootDir, sponsors) {
             });
         }
 
+        let index = [];
+        if (map.hasOwnProperty("/genindex.fjson")) {
+            index.push({
+                path: '/genindex',
+                component: 'src/containers/IndexPage',
+                getProps: () => ({ index: map["/genindex.fjson"], titles: titles }),
+            });
+            genDebug("  Found index");
+        } else {
+            console.warn("No index file found!");
+        }
+
         genDebug("# of normal pages: %j", normal.length);
 
         // Add a 404 page
@@ -126,6 +159,6 @@ export function getRoutes(rootDir, sponsors) {
             is404: true,
             component: 'src/containers/404',
         };
-        return [root, ...normal, error];
+        return [root, ...normal, ...index, error];
     }
 }
