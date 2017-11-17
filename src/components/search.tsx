@@ -29,14 +29,6 @@ export class SearchBox extends React.Component<SearchBoxProps, {}> {
             results = results.slice(0, 10);
             searchDebug("results = %o", results);
 
-            // $('.ui.search')
-            //     .search({
-            //         source: content,
-            //         searchFields: [
-            //             'title'
-            //         ],
-            //         searchFullText: false
-            //     });
             return results.map((result) => ({ title: this.props.titles[result.ref], href: result.ref }));
         }
         return [];
@@ -65,7 +57,7 @@ export class SearchBox extends React.Component<SearchBoxProps, {}> {
                 </div>
                 {this.hits.length > 0 && <div
                     className={"results transition visible"}
-                    style={{ display: 'block !important' }}>
+                    style={{ display: 'block !important', left: "unset", "right": "1em" }}>
                     {this.hits.map((hit, i) => (
                         <a key={i} className="result" href={hit.href}>
                             <div className="content2">

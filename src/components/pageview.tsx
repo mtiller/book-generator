@@ -37,39 +37,42 @@ export class PageView extends React.Component<PageViewProps, {}> {
         return (
             <div>
                 <div className="ui top fixed inverted menu">
-                    {data.prev && <div className="left menu">
+                    <div className="left menu">
                         <div id="thumb" className="title item">
                             <i className="icon list layout"></i>
                         </div>
 
-                        <div className="title item">
+                        {data.prev && <div className="title item">
                             <i className="icon left arrow"></i>
                             <a href={data.prev.link}>{data.prev.title}</a>
-                        </div>
-                    </div>}
-                    {data.parents && data.parents.length > 0 ?
+                        </div>}
+                    </div>
+
+                    <div className="center menu">
+
+                        {data.parents && data.parents.length > 0 &&
+                            <div className="title item">
+                                <i className="icon up arrow"></i>
+                                <a className="title-font" href={data.parents[data.parents.length - 1].link}>
+                                    {data.parents[data.parents.length - 1].title}
+                                </a>
+                            </div>}
+
                         <div className="title item">
-                            <i className="icon up arrow"></i>
-                            <a className="title-font" href={data.parents[data.parents.length - 1].link}>
-                                {data.parents[data.parents.length - 1].title}
-                            </a>
-                        </div>
-                        : <div className="title item">
-                            <i className="icon home"></i>
                             <a className="title-font" href="/">
-                                Home
+                                <i className="icon home" />
                             </a>
                         </div>
-                    }
 
-                    <SearchBox indexUrl="/lunr.json" titles={this.props.titles} />
+                    </div>
 
-                    {data.next && <div className="right menu">
-                        <div className="title item">
+                    <div className="right menu">
+                        <SearchBox indexUrl="/lunr.json" titles={this.props.titles} />
+                        {data.next && <div className="title item">
                             <a href={data.next.link}>{data.next.title}</a>
                             <i className="icon right arrow"></i>
-                        </div>
-                    </div>}
+                        </div>}
+                    </div>
                 </div>
 
                 <div>
