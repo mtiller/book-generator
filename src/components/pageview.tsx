@@ -1,7 +1,13 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { SphinxPage } from '../sphinx';
 import { renderFigures } from './figures';
 import { SearchBox } from './search';
+import { Peek } from './peek';
+
+import debug from 'debug';
+const pageDebug = debug("mbe:page-view");
+pageDebug.enabled = true;
 
 declare var $: any;
 
@@ -31,6 +37,58 @@ export class PageView extends React.Component<PageViewProps, {}> {
         // being managed by React.  But it is in "dangerous inner HTML"
         // so I suspect React isn't too concerned with that.
         if (this.content) renderFigures(this.content);
+
+        let annotations: HTMLSpanElement[] = $("span.kr:contains(annotation)");
+        let markers: Array<Array<Node>> = [];
+        pageDebug("Found %d annotations on this page", annotations.length);
+        for (let i = 0; i < annotations.length; i++) {
+            let annotation = annotations[i];
+            let nodes: Node[] = [annotation];
+            pageDebug("Searching for end of annotation %d", i);
+            for (let sib = annotation.nextSibling; sib != null; sib = sib.nextSibling) {
+                nodes.push(sib);
+                if (sib.textContent.endsWith(";")) {
+                    markers.push(nodes);
+                    pageDebug("  Found end of annotation: %o", sib);
+                    break;
+                }
+            }
+        }
+
+        // Loop over all markers and add a "Peek" component
+        markers.forEach((marker) => {
+            // Find the parenthesis that starts this segment of the DOM
+            let paren = marker[1];
+            // Get its parent
+            let parent = paren.parentElement;
+
+            // Assuming it has a parent...
+            if (parent) {
+                // Create a new span inside the code fragment where we can mount any
+                // React components and style it.
+                let mountPoint = document.createElement('span');
+                mountPoint.setAttribute("style", "");
+
+                // Insert this new mount point right before the paren node
+                parent.insertBefore(mountPoint, paren);
+
+                // Now create a dummy container
+                let con = document.createElement('div');
+                // Fill it with all the nodes in the DOM that we want to toggle
+                marker.slice(1).forEach((elem) => con.appendChild(elem));
+                // Extract the *inner* HTML for this set of nodes (we don't want the <div> itself, just
+                // its contents).
+                let html = con.innerHTML;
+                // Now foolishly and recklessly mount a Peek component at the mount point
+                // and give it a child that has the previous elements inner HTML as it's
+                // own inner HTML.  A DOM transplant, if you will.
+                ReactDOM.render(<Peek><span dangerouslySetInnerHTML={{ __html: html }} /></Peek>, mountPoint);
+
+                // Now, take shower.
+            } else {
+                pageDebug("Odd, this element doesn't have a parent?!?: %o", marker[0]);
+            }
+        })
     }
     render() {
         let data = this.props.data;
