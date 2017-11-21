@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { SphinxPage } from '../sphinx';
+import { SphinxPage, GlobalData } from '../sphinx';
 import { Sponsors, SponsorView } from './sponsors';
 
 export interface LandingPageProps {
     data: SphinxPage;
     sponsors: Sponsors;
+    context: GlobalData;
 }
 
 declare var $: any;
@@ -143,6 +144,7 @@ export class QuickLinks extends React.Component<{}, {}> {
 
 export class LandingPage extends React.Component<LandingPageProps, {}> {
     render() {
+        console.log("this.props.context = ", JSON.stringify(this.props.context));
         let data = this.props.data;
         return (
             <div>
@@ -173,6 +175,11 @@ export class LandingPage extends React.Component<LandingPageProps, {}> {
                         <SponsorView sponsors={this.props.sponsors} />
                     </div>
                 </div>
+
+                <p style={{ float: "right", fontSize: "75%", color: "#888" }}>
+                    <span className="metadata">{this.props.context.release}</span>
+                </p>
+
             </div>
         )
     }

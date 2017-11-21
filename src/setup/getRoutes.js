@@ -7,6 +7,7 @@ var lunr = require('lunr');
 
 import debug from 'debug';
 const genDebug = debug("mbe:gen");
+// genDebug.enabled = true;
 
 function isNormal(name, data) {
     if (name === "index.fjson") {
@@ -29,7 +30,9 @@ function isNormal(name, data) {
     }
     return ret;
 }
-export function getRoutes(rootDir, sponsors) {
+export function getRoutes(rootDir, sponsors, context) {
+    genDebug("root directory: %s", rootDir);
+    genDebug("global data: %o", context);
     return async (data) => {
         // Figure out if we are running this in dev mode
         let dev = data.dev;
@@ -89,14 +92,14 @@ export function getRoutes(rootDir, sponsors) {
         let root = {
             path: '/',
             component: 'src/containers/Root',
-            getProps: () => ({ page: map["/index.fjson"], sponsors: sponsors }),
+            getProps: () => ({ page: map["/index.fjson"], sponsors: sponsors, context: context }),
         };
 
         let normal = pages.filter((page) => isNormal(page, map[page])).map((page) => {
             return {
                 path: page.slice(0, page.length - 6) + "/",
                 component: 'src/containers/Page',
-                getProps: () => ({ data: map[page], titles: titles }),
+                getProps: () => ({ data: map[page], titles: titles, context: context }),
             }
         });
 

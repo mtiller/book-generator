@@ -1,19 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { SphinxPage } from '../sphinx';
+import { SphinxPage, GlobalData } from '../sphinx';
 import { renderFigures } from './figures';
 import { SearchBox } from './search';
 import { Peek } from './peek';
 
 import debug from 'debug';
 const pageDebug = debug("mbe:page-view");
-pageDebug.enabled = true;
+// pageDebug.enabled = true;
 
 declare var $: any;
 
 export interface PageViewProps {
     data: SphinxPage;
     titles: { [id: string]: string };
+    context: GlobalData;
 }
 
 export class PageView extends React.Component<PageViewProps, {}> {
