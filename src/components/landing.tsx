@@ -22,7 +22,7 @@ const questions: Question[] = [
     },
     {
         question: 'What do you mean by "pay what you can"?',
-        answer: "It means that I want people to learn Modelica in an affordable way. If you are a college student, you can read the HTML version for free or spend $5 and get the electronic versions of the book, too. If you are a professional engineer, I think you should be willing to pay at least $20 for a book tied closely to your professional activities."
+        answer: "It means that I want people to learn Modelica in an affordable way. If you are a college student, you can read the HTML version for free or spend $5 and get the electronic versions of the book, too. If you are a professional engineer, you could probably afford to pay at $20 or so for a book tied closely to your professional activities.  Ultimately, it is up to you to decide what the book is worth to you."
     },
     {
         question: "What happens if a newer version comes out?",
@@ -37,7 +37,7 @@ const questions: Question[] = [
     },
     {
         question: "Wasn't this book already paid for via Kickstarter?",
-        answer: "The Kickstarter project was a way to demonstrate demand for the book and avoid taking on a big financial risk. At the end of the day, the goal was a free HTML book on Modelica and that was successful. But I hope to keep the book up to date and add future chapters on advanced topics. Those activities go beyond the scope of the original Kickstarter project and by buying the book you not only provide financial compensation for the effort that was already made in creating the book but it encourages such future work as well.",
+        answer: "The Kickstarter project was a way to demonstrate demand for the book and avoid taking on a big financial risk. At the end of the day, the goal was a free HTML book on Modelica and that was successful. But I hope to keep the book up to date over time and publish a print version. Those activities go beyond the scope of the original Kickstarter project and by buying the book you not only provide financial compensation for the effort that was already made in creating the book but it encourages such future work as well.",
     },
     {
         question: "Is there a print version of book?",
