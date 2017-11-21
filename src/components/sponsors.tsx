@@ -50,6 +50,7 @@ export class SponsorItem extends React.Component<SponsorItemProps, {}> {
                 <div className="ui special popup">
                     <div style={{ width: "400px", padding: "5px" }}>
                         <img width={this.props.width * 2} style={{ margin: "10px", float: "left" }} src={this.props.src} />
+                        <h2>{this.props.sponsor.name}</h2>
                         <p>{this.props.sponsor.profile}</p>
                     </div>
                 </div>
