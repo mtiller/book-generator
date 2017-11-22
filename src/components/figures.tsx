@@ -53,7 +53,7 @@ export async function renderFigures(div: HTMLDivElement) {
             }
 
             let parts = src.nodeValue.split("/");
-            let model = parts[parts.length - 1].replace(".png", "");
+            let model = parts[parts.length - 1].replace(".png", "").replace(".svg", "");
 
             // Find the parent
             let parent = fig.parentElement;
