@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 import debug from 'debug';
 const indexDebug = debug("mbe:index");
-indexDebug.enabled = true;
+// indexDebug.enabled = true;
 
 export interface IndexPageProps {
     ncol: number;

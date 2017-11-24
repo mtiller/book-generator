@@ -7,7 +7,7 @@ import { Details } from './details';
 
 import debug from 'debug';
 const appDebug = debug("mbe:page-init");
-appDebug.enabled = true;
+// appDebug.enabled = true;
 
 export const ServerURL = "http://modelica.university:3000";;
 
