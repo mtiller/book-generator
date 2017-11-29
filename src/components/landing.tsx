@@ -144,7 +144,6 @@ export class QuickLinks extends React.Component<{}, {}> {
 
 export class LandingPage extends React.Component<LandingPageProps, {}> {
     render() {
-        console.log("this.props.context = ", JSON.stringify(this.props.context));
         let data = this.props.data;
         return (
             <div>
@@ -170,7 +169,7 @@ export class LandingPage extends React.Component<LandingPageProps, {}> {
                             </div>
                         </div>
                     </div>
-                    <div id="column2">
+                    <div id="column2" style={{ maxWidth: "50%" }}>
                         <QuickLinks />
                         <SponsorView sponsors={this.props.sponsors} />
                     </div>

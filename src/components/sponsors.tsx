@@ -21,7 +21,6 @@ export interface SponsorViewProps {
 }
 
 export interface SponsorRowProps {
-    category: string;
     ids: string[];
     width: number;
     sponsors: SponsorData[];
@@ -61,10 +60,7 @@ export class SponsorItem extends React.Component<SponsorItemProps, {}> {
 export class SponsorRow extends React.Component<SponsorRowProps, {}> {
     render() {
         return (
-            <div className="ui text menu" style={{ margin: "0px", paddingTop: "5px", paddingBottom: "5px", display: "flex", flexWrap: "wrap" }}>
-                <span className="blue item level" style={{ width: "4em" }} >
-                    {this.props.category}
-                </span>
+            <div className="ui text menu" style={{ margin: "0px", paddingTop: "15px", paddingBottom: "5px", display: "flex", flexWrap: "wrap" }}>
                 {this.props.sponsors.map((sponsor, i) => <SponsorItem key={sponsor.name} sponsor={sponsor} width={this.props.width} src={this.props.logoUrl(this.props.ids[i], sponsor.logo)} />)}
             </div>);
     }
@@ -93,15 +89,15 @@ export class SponsorView extends React.Component<SponsorViewProps, {}> {
                         <div style={{ borderLeft: "1px solid #ccccc" }}>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(207, 181, 59, .2)" }} >
                                 <a className="ui blue ribbon label">Gold Sponsors</a>
-                                <SponsorRow category="Gold" width={120} sponsors={gold} ids={this.props.sponsors.goldSponsors} logoUrl={logoUrl} />
+                                <SponsorRow width={120} sponsors={gold} ids={this.props.sponsors.goldSponsors} logoUrl={logoUrl} />
                             </div>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(230, 232, 250, .2)" }}>
                                 <a className="ui blue ribbon label">Silver Sponsors</a>
-                                <SponsorRow category="Silver" width={80} sponsors={silver} ids={this.props.sponsors.silverSponsors} logoUrl={logoUrl} />
+                                <SponsorRow width={80} sponsors={silver} ids={this.props.sponsors.silverSponsors} logoUrl={logoUrl} />
                             </div>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(140, 120, 83, .2)" }}>
                                 <a className="ui blue ribbon label">Bronze Sponsors</a>
-                                <SponsorRow category="Bronze" width={40} sponsors={bronze} ids={this.props.sponsors.bronzeSponsors} logoUrl={logoUrl} />
+                                <SponsorRow width={40} sponsors={bronze} ids={this.props.sponsors.bronzeSponsors} logoUrl={logoUrl} />
                             </div>
                         </div>
                     </div>
