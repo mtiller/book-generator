@@ -15,6 +15,6 @@ export default {
   // renderToHtml: (render, Component, meta) => {
   //   return render(<Component />);
   // },
-  Document: Document,
+  Document: Document(context),
   webpack: webpackConfig,
 }
