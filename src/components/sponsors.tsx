@@ -88,15 +88,15 @@ export class SponsorView extends React.Component<SponsorViewProps, {}> {
                         <h2>Sponsors</h2>
                         <div style={{ borderLeft: "1px solid #ccccc" }}>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(207, 181, 59, .2)" }} >
-                                <a className="ui blue ribbon label">Gold Sponsors</a>
+                                <h4 className="ui blue ribbon label">Gold Sponsors</h4>
                                 <SponsorRow width={120} sponsors={gold} ids={this.props.sponsors.goldSponsors} logoUrl={logoUrl} />
                             </div>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(230, 232, 250, .2)" }}>
-                                <a className="ui blue ribbon label">Silver Sponsors</a>
+                                <h4 className="ui blue ribbon label">Silver Sponsors</h4>
                                 <SponsorRow width={80} sponsors={silver} ids={this.props.sponsors.silverSponsors} logoUrl={logoUrl} />
                             </div>
                             <div className="ui raised segment" style={{ backgroundColor: "rgba(140, 120, 83, .2)" }}>
-                                <a className="ui blue ribbon label">Bronze Sponsors</a>
+                                <h4 className="ui blue ribbon label">Bronze Sponsors</h4>
                                 <SponsorRow width={40} sponsors={bronze} ids={this.props.sponsors.bronzeSponsors} logoUrl={logoUrl} />
                             </div>
                         </div>
